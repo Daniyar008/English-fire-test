@@ -1,1 +1,1 @@
-# English-fire-test
+# fires-in-kazakhstan-quiz
