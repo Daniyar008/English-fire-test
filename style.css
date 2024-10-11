@@ -4,9 +4,6 @@ body {
     color: #333;
     margin: 0;
     padding: 20px;
-    background-image: url('https://www.example.com/background.jpg'); /* Replace with your image URL */
-    background-size: cover;
-    background-attachment: fixed;
 }
 
 .container {
@@ -66,3 +63,4 @@ button:hover {
     text-align: center;
     color: #2a9d8f;
 }
+

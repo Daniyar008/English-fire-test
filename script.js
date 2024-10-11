@@ -54,6 +54,7 @@ const quizData = [
 const quizContainer = document.getElementById('quiz');
 const submitButton = document.getElementById('submit');
 const resultContainer = document.getElementById('result');
+const nameInput = document.getElementById('name');
 
 function loadQuiz() {
     quizData.forEach((item, index) => {
@@ -82,9 +83,27 @@ function showResults() {
             score++;
         }
     });
-    resultContainer.textContent = `You scored ${score} out of ${quizData.length}!`;
+
+    const userName = nameInput.value;
+
+    // Отправка результата на сервер
+    fetch('submit.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: `name=${userName}&score=${score}`
+    })
+    .then(response => response.text())
+    .then(data => {
+        resultContainer.textContent = data;
+    })
+    .catch(error => {
+        console.error('Ошибка:', error);
+    });
 }
 
 loadQuiz();
 
 submitButton.addEventListener('click', showResults);
+
